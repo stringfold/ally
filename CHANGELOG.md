@@ -1,3 +1,7 @@
+# [2.2.0](https://github.com/adonisjs/adonis-ally/compare/2.1.3...2.2.0) (2021-03-27)
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/adonisjs/adonis-ally/compare/v2.1.2...v2.1.3) (2019-03-06)
 
