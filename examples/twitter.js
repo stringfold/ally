@@ -16,7 +16,7 @@ http.get('/twitter', async function (request, response) {
     await twitter.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/twitter?redirect=true">Login With Twitter</a>`)
+    response.write('<a href="/twitter?redirect=true">Login With Twitter</a>')
     response.end()
   }
 })

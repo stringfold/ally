@@ -16,7 +16,7 @@ http.get('/instagram', async function (request, response) {
     await instagram.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/instagram?redirect=true">Login With Instagram</a>`)
+    response.write('<a href="/instagram?redirect=true">Login With Instagram</a>')
     response.end()
   }
 })

@@ -15,10 +15,8 @@
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
-    "test:local": "FORCE_COLOR=true node bin/index.js --local",
-    "test": "nyc node japaFile.js",
-    "test:win": "node ./node_modules/japa-cli/index.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "node japaFile.js",
+    "test:win": "node japaFile.js",
     "commit": "git-cz",
     "lint": "standard"
   },
@@ -31,20 +29,17 @@
   "author": "adonisjs,amanvirk",
   "license": "MIT",
   "devDependencies": {
-    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/fold": "^4.1.0",
     "@adonisjs/mrm-preset": "^1.0.13",
-    "@adonisjs/sink": "^1.0.17",
-    "commitizen": "^2.10.1",
-    "coveralls": "^3.0.2",
-    "cz-conventional-changelog": "^2.1.0",
-    "japa": "^2.0.3",
-    "japa-cli": "^1.0.1",
-    "mrm": "^1.2.1",
+    "@adonisjs/sink": "^1.1.0",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "japa": "^3.1.1",
+    "mrm": "^2.6.1",
     "node-cookie": "^2.1.1",
-    "nyc": "^13.0.1",
     "pkg-ok": "^2.2.0",
-    "semver": "^5.5.1",
-    "standard": "^12.0.1"
+    "semver": "^7.3.5",
+    "standard": "^16.0.3"
   },
   "standard": {
     "global": [
@@ -62,7 +57,7 @@
     "got": "8.3.2",
     "lodash": "^4.17.11",
     "oauth": "^0.9.15",
-    "uuid": "^3.3.2"
+    "uuid": "^8.3.2"
   },
   "repository": {
     "type": "git",

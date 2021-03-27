@@ -131,8 +131,8 @@ class Google extends OAuth2Scheme {
 
     const response = await got(profileUrl, {
       headers: {
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`
       },
       json: true
     })

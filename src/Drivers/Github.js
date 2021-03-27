@@ -135,8 +135,8 @@ class Github extends OAuth2Scheme {
 
     const response = await got(profileUrl, {
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': `token ${accessToken}`
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `token ${accessToken}`
       },
       json: true
     })
@@ -199,8 +199,8 @@ class Github extends OAuth2Scheme {
   async _getUserEmail (accessToken) {
     const response = await got('https://api.github.com/user/emails', {
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': `token ${accessToken}`
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `token ${accessToken}`
       },
       json: true
     })

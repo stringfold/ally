@@ -36,18 +36,20 @@ class LinkedIn extends OAuth2Scheme {
     this._redirectUriOptions = _.merge({ response_type: 'code' }, config.options)
 
     this.scope = _.size(config.scope) ? config.scope : ['r_basicprofile', 'r_emailaddress']
-    this.fields = _.size(config.fields) ? config.fields : [
-      'id',
-      'first-name',
-      'last-name',
-      'formatted-name',
-      'email-address',
-      'location',
-      'industry',
-      'public-profile-url',
-      'picture-url',
-      'picture-urls::(original)'
-    ]
+    this.fields = _.size(config.fields)
+      ? config.fields
+      : [
+          'id',
+          'first-name',
+          'last-name',
+          'formatted-name',
+          'email-address',
+          'location',
+          'industry',
+          'public-profile-url',
+          'picture-url',
+          'picture-urls::(original)'
+        ]
   }
 
   /**
@@ -139,7 +141,7 @@ class LinkedIn extends OAuth2Scheme {
     const response = await got(profileUrl, {
       headers: {
         'x-li-format': 'json',
-        'Authorization': `Bearer ${accessToken}`
+        Authorization: `Bearer ${accessToken}`
       },
       json: true
     })

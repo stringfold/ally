@@ -16,7 +16,7 @@ http.get('/google', async function (request, response) {
     await google.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/google?redirect=true">Login With Google</a>`)
+    response.write('<a href="/google?redirect=true">Login With Google</a>')
     response.end()
   }
 })

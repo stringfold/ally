@@ -11,7 +11,7 @@
 
 const GE = require('@adonisjs/generic-exceptions')
 const One = require('./Schemes/OAuth')
-const uuid = require('uuid/v4')
+const { v4 } = require('uuid')
 
 /**
  * The public interface to authenticate and get user
@@ -105,7 +105,7 @@ class Authenticator {
     let state = null
 
     if (!this._isStateless && this._driverInstance.supportStates) {
-      state = uuid()
+      state = v4()
       this._response.cookie('oauth_state', state, this._cookieOptions)
     }
 

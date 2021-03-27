@@ -135,7 +135,7 @@ class Facebook extends OAuth2Scheme {
 
     const response = await got(profileUrl, {
       headers: {
-        'Accept': 'application/json'
+        Accept: 'application/json'
       },
       json: true
     })

@@ -16,7 +16,7 @@ http.get('/linkedin', async function (request, response) {
     await linkedin.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/linkedin?redirect=true">Login With Linkedin</a>`)
+    response.write('<a href="/linkedin?redirect=true">Login With Linkedin</a>')
     response.end()
   }
 })

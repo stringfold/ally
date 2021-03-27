@@ -10,7 +10,7 @@
 */
 
 const http = require('http')
-const url = require('url')
+const { URL } = require('url')
 const qs = require('querystring')
 const nodeCookie = require('node-cookie')
 
@@ -31,7 +31,7 @@ class Request {
   }
 
   get () {
-    const parsedUrl = url.parse(this.req.url)
+    const parsedUrl = new URL(this.req.url, 'http://localhost:8000')
     return parsedUrl.search ? qs.parse(parsedUrl.search.replace('?', '')) : {}
   }
 }
@@ -80,7 +80,7 @@ httpServer.get = function (route, closure) {
 
 httpServer.start = function () {
   return http.createServer(function (req, res) {
-    const parsedUrl = url.parse(req.url)
+    const parsedUrl = new URL(req.url, 'http://localhost:8000')
     if (routes[parsedUrl.pathname]) {
       return routes[parsedUrl.pathname](new Request(req), new Response(res))
     }

@@ -19,7 +19,7 @@ http.get('/foursquare', async function (request, response) {
     await foursquare.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/foursquare?redirect=true">Login With FourSquare</a>`)
+    response.write('<a href="/foursquare?redirect=true">Login With FourSquare</a>')
     response.end()
   }
 })

@@ -16,7 +16,7 @@ http.get('/github', async function (request, response) {
     await github.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/github?redirect=true">Login With Github</a>`)
+    response.write('<a href="/github?redirect=true">Login With Github</a>')
     response.end()
   }
 })

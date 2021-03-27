@@ -17,7 +17,7 @@ http.get('/facebook', async function (request, response) {
     await facebook.redirect()
   } else {
     response.writeHead(200, { 'content-type': 'text/html' })
-    response.write(`<a href="/facebook?redirect=true">Login With Facebook</a>`)
+    response.write('<a href="/facebook?redirect=true">Login With Facebook</a>')
     response.end()
   }
 })
