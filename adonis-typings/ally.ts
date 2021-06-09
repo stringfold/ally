@@ -557,55 +557,60 @@ declare module '@ioc:Adonis/Addons/Ally' {
 
   /**
    * Available reddit scopes
-   * https://reddit.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes
+   * https://www.reddit.com/api/v1/scopes
    */
   export type RedditScopes =
-    | 'activities.read'
-    | 'activities.write'
-    | 'applications.builds.read'
-    | 'applications.builds.upload'
-    | 'applications.commands'
-    | 'applications.commands.update'
-    | 'applications.entitlements'
-    | 'applications.store.update'
-    | 'bot'
-    | 'connections'
-    | 'email'
-    | 'gdm.join'
-    | 'guilds'
-    | 'guilds.join'
-    | 'identify'
-    | 'messages.read'
-    | 'relationships.read'
-    | 'rpc'
-    | 'rpc.activities.write'
-    | 'rpc.notifications.read'
-    | 'rpc.voice.read'
-    | 'rpc.voice.write'
-    | 'webhook.incoming'
+    | 'account'
+    | 'creddits'
+    | 'edit'
+    | 'flair'
+    | 'history'
+    | 'identity'
+    | 'livemanage'
+    | 'mysubreddits'
+    | 'modconfig'
+    | 'modcontributors'
+    | 'modflair'
+    | 'modlog'
+    | 'modmail'
+    | 'modothers'
+    | 'modposts'
+    | 'modself'
+    | 'modtraffic'
+    | 'modwiki'
+    | 'privatemessages'
+    | 'read'
+    | 'report'
+    | 'save'
+    | 'structuredstyles'
+    | 'submit'
+    | 'subscribe'
+    | 'vote'
+    | 'wikiedit'
+    | 'wikiread'
 
   /**
    * Shape of the Reddit access token
    */
+  //@TODO: Check token fields are complete and correct
   export type RedditToken = {
     token: string
+    secret: string
     type: string
-    scope: string
     expiresIn: number
-    expiresAt: Exclude<Oauth2AccessToken['expiresAt'], undefined>
+    scope: string
     refreshToken: string
   }
 
   /**
    * Extra options available for Reddit
    */
+  //@TODO: Check driver config fields are complete and correct
   export type RedditDriverConfig = Oauth2ClientConfig & {
     driver: 'reddit'
     userInfoUrl?: string
     scopes?: LiteralStringUnion<RedditScopes>[]
     prompt?: 'consent' | 'none'
-    guildId?: `${bigint}` // a snowflake
-    disableGuildSelect?: boolean
     permissions?: number
   }
 

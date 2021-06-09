@@ -25,10 +25,9 @@ export class RedditDriver
   extends Oauth2Driver<RedditToken, RedditScopes>
   implements RedditDriverContract
 {
-  protected accessTokenUrl = 'https://reddit.com/api/oauth2/token'
-  protected authorizeUrl = 'https://reddit.com/api/oauth2/authorize'
-  protected userInfoUrl = 'https://reddit.com/api/users/@me'
-
+  protected accessTokenUrl = 'https://www.reddit.com/api/v1/access_token'
+  protected authorizeUrl = 'https://www.reddit.com/api/v1/authorize'
+  protected userInfoUrl = 'https://discord.com/api/users/me'
   /**
    * The param name for the authorization code
    */
@@ -77,7 +76,7 @@ export class RedditDriver
     /**
      * Define user defined scopes or the default one's
      */
-    request.scopes(this.config.scopes || ['email'])
+    request.scopes(this.config.scopes || ['identity'])
 
     request.param('response_type', 'code')
     request.param('grant_type', 'authorization_code')
@@ -87,12 +86,6 @@ export class RedditDriver
      */
     if (this.config.prompt) {
       request.param('prompt', this.config.prompt)
-    }
-    if (this.config.guildId) {
-      request.param('guild_id', this.config.guildId)
-    }
-    if (this.config.disableGuildSelect !== undefined) {
-      request.param('disable_guild_select', this.config.disableGuildSelect)
     }
     if (this.config.permissions !== undefined) {
       request.param('permissions', this.config.permissions)

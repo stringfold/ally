@@ -201,7 +201,7 @@ export default async function instructions(
       twitter: false,
       discord: false,
       linkedin: false,
-      reddit: false
+      reddit: false,
     },
     envVars: ENV_VARS,
   }
