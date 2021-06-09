@@ -37,3 +37,10 @@ GITHUB_CLIENT_SECRET: Env.schema.string(),
 FACEBOOK_CLIENT_ID: Env.schema.string(),
 FACEBOOK_CLIENT_SECRET: Env.schema.string(),
 ```
+
+### Variables for Reddit provider
+
+```ts
+REDDIT_CLIENT_ID: Env.schema.string(),
+REDDIT_CLIENT_SECRET: Env.schema.string(),
+```

@@ -61,3 +61,10 @@ export const facebook = {
   AUTHORIZE_URL: 'https://www.facebook.com/v10.0/dialog/oauth',
   ACCESS_TOKEN_URL: 'https://graph.facebook.com/v10.0/dialog/oauth/access_token',
 }
+
+export const reddit = {
+  AUTHORIZE_URL: 'https://reddit.com/api/oauth2/authorize',
+  ACCESS_TOKEN_URL: 'https://reddit.com/api/oauth2/token',
+  USER_INFO_URL: 'https://reddit.com/api/users/@me',
+}
+

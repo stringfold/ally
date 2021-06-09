@@ -24,5 +24,9 @@ declare module '@ioc:Adonis/Addons/Ally' {
       config: FacebookDriverConfig
       implementation: FacebookDriverContract
     }
+    reddit: {
+      config: RedditDriverConfig
+      implementation: RedditDriverContract
+    }
   }
 }

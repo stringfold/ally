@@ -38,6 +38,12 @@ const allyConfig: AllyConfig = {
     clientSecret: Env.get('FACEBOOK_CLIENT_SECRET'),
     callbackUrl: `http://localhost:${Env.get('PORT')}/facebook/callback`,
   },
+  reddit: {
+    driver: 'reddit',
+    clientId: Env.get('REDDIT_CLIENT_ID'),
+    clientSecret: Env.get('REDDIT_CLIENT_SECRET'),
+    callbackUrl: `http://localhost:${Env.get('PORT')}/reddit/callback`,
+  },
 }
 
 export default allyConfig

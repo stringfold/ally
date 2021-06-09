@@ -1,0 +1,11 @@
+	/*
+	|--------------------------------------------------------------------------
+	| Reddit driver
+	|--------------------------------------------------------------------------
+	*/
+	reddit: {
+		driver: 'reddit',
+		clientId: Env.get('{{ envVars.reddit.clientId }}'),
+		clientSecret: Env.get('{{ envVars.reddit.clientSecret }}'),
+		callbackUrl: 'http://localhost:3333/reddit',
+	},

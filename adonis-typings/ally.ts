@@ -550,6 +550,70 @@ declare module '@ioc:Adonis/Addons/Ally' {
   }
 
   /**
+   * ----------------------------------------
+   * Reddit driver
+   * ----------------------------------------
+   */
+
+  /**
+   * Available reddit scopes
+   * https://reddit.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes
+   */
+  export type RedditScopes =
+    | 'activities.read'
+    | 'activities.write'
+    | 'applications.builds.read'
+    | 'applications.builds.upload'
+    | 'applications.commands'
+    | 'applications.commands.update'
+    | 'applications.entitlements'
+    | 'applications.store.update'
+    | 'bot'
+    | 'connections'
+    | 'email'
+    | 'gdm.join'
+    | 'guilds'
+    | 'guilds.join'
+    | 'identify'
+    | 'messages.read'
+    | 'relationships.read'
+    | 'rpc'
+    | 'rpc.activities.write'
+    | 'rpc.notifications.read'
+    | 'rpc.voice.read'
+    | 'rpc.voice.write'
+    | 'webhook.incoming'
+
+  /**
+   * Shape of the Reddit access token
+   */
+  export type RedditToken = {
+    token: string
+    type: string
+    scope: string
+    expiresIn: number
+    expiresAt: Exclude<Oauth2AccessToken['expiresAt'], undefined>
+    refreshToken: string
+  }
+
+  /**
+   * Extra options available for Reddit
+   */
+  export type RedditDriverConfig = Oauth2ClientConfig & {
+    driver: 'reddit'
+    userInfoUrl?: string
+    scopes?: LiteralStringUnion<RedditScopes>[]
+    prompt?: 'consent' | 'none'
+    guildId?: `${bigint}` // a snowflake
+    disableGuildSelect?: boolean
+    permissions?: number
+  }
+
+  export interface RedditDriverContract extends AllyDriverContract<RedditToken, RedditScopes> {
+    version: 'oauth2'
+  }
+
+  /**
    * END OF DRIVERS
    */
 
