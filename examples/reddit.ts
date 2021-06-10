@@ -15,7 +15,7 @@ Route.get('reddit', async ({ response }) => {
 
 Route.get('/reddit/redirect', async ({ ally }) => {
   return ally.use('reddit').redirect((request) => {
-    request.scopes(['identify', 'guilds'])
+    request.scopes(['identity'])
   })
 })
 

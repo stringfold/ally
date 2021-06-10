@@ -42,7 +42,8 @@ const allyConfig: AllyConfig = {
     driver: 'reddit',
     clientId: Env.get('REDDIT_CLIENT_ID'),
     clientSecret: Env.get('REDDIT_CLIENT_SECRET'),
-    callbackUrl: `http://localhost:${Env.get('PORT')}/reddit/callback`,
+    //@TODO: Revert next line to localhost instead of valers.com
+    callbackUrl: `http://valers.com:${Env.get('PORT')}/reddit/callback`,
   },
 }
 

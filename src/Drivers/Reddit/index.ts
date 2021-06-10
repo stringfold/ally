@@ -26,8 +26,10 @@ export class RedditDriver
   implements RedditDriverContract
 {
   protected accessTokenUrl = 'https://www.reddit.com/api/v1/access_token'
+  //@TODO: Include option to revoke token when logging out?
+  protected revokeTokenUrl = 'https://www.reddit.com/api/v1/revoke_token'
   protected authorizeUrl = 'https://www.reddit.com/api/v1/authorize'
-  protected userInfoUrl = 'https://discord.com/api/users/me'
+  protected userInfoUrl = 'https://oauth.reddit.com/api/v1/me'
   /**
    * The param name for the authorization code
    */
@@ -79,17 +81,8 @@ export class RedditDriver
     request.scopes(this.config.scopes || ['identity'])
 
     request.param('response_type', 'code')
-    request.param('grant_type', 'authorization_code')
-
-    /**
-     * Define params based upon user config
-     */
-    if (this.config.prompt) {
-      request.param('prompt', this.config.prompt)
-    }
-    if (this.config.permissions !== undefined) {
-      request.param('permissions', this.config.permissions)
-    }
+    //@TODO: option for permanant token and refresh?
+    request.param('duration', 'temporary')
   }
 
   /**
@@ -99,6 +92,9 @@ export class RedditDriver
     /**
      * Send state to Reddit when request is not stateles
      */
+    const buffer = Buffer.from(this.options.clientId + ':' + this.options.clientSecret)
+    request.header('Authorization', 'Basic ' + buffer.toString('base64'))
+    //@TODO: Remove client_id and client_secret fields from body (included in header)
     if (!this.isStateless) {
       request.field('state', this.stateCookieValue)
     }
@@ -109,7 +105,7 @@ export class RedditDriver
    */
   protected getAuthenticatedRequest(url: string, token: string) {
     const request = this.httpClient(url)
-    request.header('Authorization', `Bearer ${token}`)
+    request.header('Authorization', `bearer ${token}`)
     request.header('Accept', 'application/json')
     request.parseAs('json')
     return request
