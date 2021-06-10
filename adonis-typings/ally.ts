@@ -66,7 +66,7 @@ declare module '@ioc:Adonis/Addons/Ally' {
    */
   export interface AllyUserContract<Token extends Oauth2AccessToken | Oauth1AccessToken> {
     id: string
-    nickName: string
+    nickName: string | null
     name: string
     email: string | null
     emailVerificationState: 'verified' | 'unverified' | 'unsupported'
@@ -592,7 +592,6 @@ declare module '@ioc:Adonis/Addons/Ally' {
   /**
    * Shape of the Reddit access token
    */
-  //@TODO: Check token fields are complete and correct
   export type RedditToken = {
     token: string
     secret: string
@@ -605,13 +604,10 @@ declare module '@ioc:Adonis/Addons/Ally' {
   /**
    * Extra options available for Reddit
    */
-  //@TODO: Check driver config fields are complete and correct
   export type RedditDriverConfig = Oauth2ClientConfig & {
     driver: 'reddit'
     userInfoUrl?: string
     scopes?: LiteralStringUnion<RedditScopes>[]
-    prompt?: 'consent' | 'none'
-    permissions?: number
   }
 
   export interface RedditDriverContract extends AllyDriverContract<RedditToken, RedditScopes> {

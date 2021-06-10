@@ -26,8 +26,6 @@ export class RedditDriver
   implements RedditDriverContract
 {
   protected accessTokenUrl = 'https://www.reddit.com/api/v1/access_token'
-  //@TODO: Include option to revoke token when logging out?
-  protected revokeTokenUrl = 'https://www.reddit.com/api/v1/revoke_token'
   protected authorizeUrl = 'https://www.reddit.com/api/v1/authorize'
   protected userInfoUrl = 'https://oauth.reddit.com/api/v1/me'
   /**
@@ -81,7 +79,6 @@ export class RedditDriver
     request.scopes(this.config.scopes || ['identity'])
 
     request.param('response_type', 'code')
-    //@TODO: option for permanant token and refresh?
     request.param('duration', 'temporary')
   }
 
@@ -94,7 +91,13 @@ export class RedditDriver
      */
     const buffer = Buffer.from(this.options.clientId + ':' + this.options.clientSecret)
     request.header('Authorization', 'Basic ' + buffer.toString('base64'))
-    //@TODO: Remove client_id and client_secret fields from body (included in header)
+
+    /**
+     * Remove client_id and client_secret fields from body (included in header)
+     */
+    request.clearField('client_id')
+    request.clearField('client_secret')
+
     if (!this.isStateless) {
       request.field('state', this.stateCookieValue)
     }
@@ -124,20 +127,11 @@ export class RedditDriver
     const body = await request.get()
     return {
       id: body.id,
-      name: `${body.username}#${body.discriminator}`,
-      nickName: body.username,
-      avatarUrl: body.avatar
-        ? `https://cdn.redditapp.com/avatars/${body.id}/${body.avatar}.${
-            body.avatar.startsWith('a_') ? 'gif' : 'png'
-          }`
-        : `https://cdn.redditapp.com/embed/avatars/${body.discriminator % 5}.png`,
-      email: body.email, // May not always be there (requires email scope)
-      emailVerificationState:
-        'verified' in body
-          ? body.verified
-            ? ('verified' as const)
-            : ('unverified' as const)
-          : ('unsupported' as const),
+      name: body.name,
+      nickName: null,
+      avatarUrl: body.icon_img,
+      email: null,
+      emailVerificationState: body.verified ? ('verified' as const) : ('unverified' as const),
       original: body,
     }
   }

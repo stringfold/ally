@@ -65,6 +65,5 @@ export const facebook = {
 export const reddit = {
   AUTHORIZE_URL: 'https://www.reddit.com/api/v1/authorize',
   ACCESS_TOKEN_URL: 'https://www.reddit.com/api/v1/access_token',
-  REVOKE_TOKEN_URL: 'https://www.reddit.com/api/v1/revoke_token',
   USER_INFO_URL: 'https://oauth.reddit.com/api/v1/me',
 }
