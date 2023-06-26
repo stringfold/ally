@@ -13,6 +13,7 @@ import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
 type InstructionsState = {
   providers: {
+    facebook: boolean
     github: boolean
     google: boolean
     twitter: boolean
@@ -196,6 +197,7 @@ export default async function instructions(
 ) {
   const state: InstructionsState = {
     providers: {
+      facebook: false,
       github: false,
       google: false,
       twitter: false,
@@ -208,6 +210,7 @@ export default async function instructions(
 
   const selectedProviders = await getProvider(sink)
   state.providers.discord = selectedProviders.includes('discord')
+  state.providers.facebook = selectedProviders.includes('facebook')
   state.providers.github = selectedProviders.includes('github')
   state.providers.google = selectedProviders.includes('google')
   state.providers.twitter = selectedProviders.includes('twitter')
